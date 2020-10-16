@@ -26,12 +26,12 @@ function HomeScreen(){
 
     return loading ? <div>Loading...</div> :
           error ? <div>{error}</div> :  
-       <ul className="products" >
+       <ul className="products"   >
     {
            products.map(product=>
             <li key={product.id} > 
-            <div className="product" >
-            <Link to={'/product/' +product.id }>
+            <div className="product"  >
+            <Link to={'/product/' + product.id }>
             <img className="product-image" src={product.image} alt="product"/>
                  </Link>
                 

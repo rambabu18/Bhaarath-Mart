@@ -34,13 +34,13 @@ function Products(){
             <div className='nav-fill'>
             <div id='nav-xshop-container'  >
             <div id='nav-xshop' >
-            <a href ='true'  className="nav-a">Mens</a>
-            <a href ='true'   className="nav-a" >Women</a>
-            <a href ='true'   className="nav-a" >Children</a>
-            <a href ='true'  className="nav-a" >Electronic</a>
-            <a href ='true'   className="nav-a" >Mobile</a>
-            <a href ='true'  className="nav-a" >TV</a>
-            <a href ='true'  className="nav-a" >Accessories</a>
+            <Link to ='true'  className="nav-a">Mens</Link>
+            <Link to ='true'   className="nav-a" >Women</Link>
+            <Link to ='true'   className="nav-a" >Children</Link>
+            <Link to ='true'  className="nav-a" >Electronic</Link>
+            <Link to ='true'   className="nav-a" >Mobile</Link>
+            <Link to ='true'  className="nav-a" >TV</Link>
+            <Link to ='true'  className="nav-a" >Accessories</Link>
             
             </div>
             </div>
@@ -48,7 +48,7 @@ function Products(){
             
 
         <div className="header-links" >
-            <a href="cart.html">Cart</a>
+            <Link to="cart.html">Cart</Link>
             {
                 userInfo ? <Link to='/profile'>{userInfo.name}</Link> :
                 <Link to="/signin"> <a href="signin.html" >signin</a> </Link>

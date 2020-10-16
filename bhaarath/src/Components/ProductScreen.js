@@ -11,7 +11,7 @@ function ProductScreen(props){
     const dispatch = useDispatch()
 
     useEffect((props)=> {
-       // console.log(props.match.params.id);
+        console.log(props.match.params.id);
         dispatch(detailsProduct(props.match.params.id));
         return()=>{
            //
@@ -38,7 +38,7 @@ function ProductScreen(props){
             </div>
             <div className='details-info' >
                 <ul>
-                    <li>
+                    <li >
                          <h4>{product.name}</h4>
                     </li>
                     <li>
