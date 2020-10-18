@@ -10,7 +10,7 @@ router.get("/", async(req,res)=>{
    res.send(products);
 });
 
-router.post("/", isAuth, isAdmin async(req,res)=>{
+router.post("/", isAuth, isAdmin, async(req,res)=>{
    const product = new Product({
       name: req.body.name,
       price: req.body.price,
