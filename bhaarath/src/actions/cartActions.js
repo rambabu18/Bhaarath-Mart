@@ -12,7 +12,7 @@ const addToCart= (productId, qty) => async(dispatch, getState)=>{
             image:data.image,
             price:data.price,
             countInStock:data.countInStock,
-             qty
+            qty
         }})
         const {cart:{cartItems}} = getState()
         Cookie.set('cartItems',JSON.stringify(cartItems))
