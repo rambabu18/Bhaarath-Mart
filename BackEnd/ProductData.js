@@ -1,7 +1,7 @@
 export default {
          products : [
       {
-        id:1,
+        _id:1,
         name:'Slim Shirt',
         image:'/images/s1.jpeg',
         price:500 ,
@@ -14,7 +14,7 @@ export default {
         
     },
     {
-        id:2,
+        _id:2,
         name:'Best Shirt',
         image:'/images/s1.jpeg',
         price:500,
@@ -27,7 +27,7 @@ export default {
        
     },
     {
-        id:3,
+        _id:3,
         name:'Small Shirt',
         image:'/images/s1.jpeg',
         price:500,
@@ -40,7 +40,7 @@ export default {
        
     },
     {
-        id:4,
+        _id:4,
         name:'Medium Shirt',
         image:'/images/s1.jpeg',
         price:500,
@@ -53,7 +53,7 @@ export default {
        
     },
     {
-        id:5,
+        _id:5,
         name:'Large Shirt',
         image:'/images/s1.jpeg',
         price:500,

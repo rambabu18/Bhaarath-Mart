@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { saveProduct, listProducts } from '../actions/ProductAction';
+import { saveProduct, listProducts, deleteProduct } from '../actions/ProductAction';
 
 
 function ProductsScreen(props) {
@@ -15,23 +15,30 @@ function ProductsScreen(props) {
     const [countInStock, setCountInStock] = useState('');
     const [description, setDescription] = useState('');
 
-    const productlist = useSelector(state=>state.productList);
-    const {loading, products, error} = productlist;
-    const productsave = useSelector(state=> state.productSave);
-    const {loading: loadingSave, success:successSave, error: errorSave} = productsave;
+    const productList = useSelector(state=>state.productList);
+    const {loading, products, error} = productList;
+     
+    const productSave = useSelector(state=> state.productSave);
+    const {loading: loadingSave, success:successSave, error: errorSave} = productSave;
+
+    const productDelete = useSelector(state=> state.productDelete);
+    const {loading: loadingDelete, success:successDelete, error: errorDelete} = productDelete;
     
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if(successSave){
+            setModalVisible(false);
+        }
         dispatch(listProducts());
         return () => { 
             //
         }
-    }, []);
+    }, [successSave, successDelete]);
 
     const openModal = (product) =>{
         setModalVisible(true);
-        setId(product.id);
+        setId(product._id);
         setName(product.name);
         setPrice(product.price);
         setImage(product.image);
@@ -45,16 +52,20 @@ function ProductsScreen(props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveProduct({
-               id:id,
+               _id:id,
                name,price, image, brand, description,
                countInStock, category
             }));
+    }
+
+    const deleteHandler = (product) =>{
+        dispatch(deleteProduct(product._id))
     }
             
     return <div className='content content-margined' >
         <div className='product-header'>
         <h3>Products</h3>
-        <button onClick={()=> openModal({})} >Create Product</button>
+        <button className="button primary" onClick={()=> openModal({})} >Create Product</button>
         </div>
         {modalVisible && 
         <div className='form'>
@@ -111,18 +122,19 @@ function ProductsScreen(props) {
                 </li>
 
                 <li>
-                    <button type='submit' className='button primary' >{id ? "Update": "Create"} </button>
-                    <button type='button' onClick={()=>setModalVisible(false)}  className='button secondary' >Back</button>
+                    <button type='submit' className='button primary' >{ id ? "Update": "Create"} </button>  
                 </li>
 
-
+                <li> 
+                    <button type='button' onClick={()=>setModalVisible(false)}  className='button secondary' >Cancle</button>
+                </li>
             </ul>
         </form>
     </div>
         }
         
         <div className='product-list' >
-            <table>
+            <table className='table' >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -134,16 +146,17 @@ function ProductsScreen(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map(product=>(<tr>
-                        <td>{product.id}</td>
+                    {products.map(product=>(<tr key={product._id} >
+                        <td>{product._id}</td>
                         <td>{product.name}</td>
                         <td>{product.price}</td>
                         <td>{product.category}</td>
                         <td>{product.brand}</td>
 
                        <td>
-                            <button onClick={()=>setModalVisible(product)} >Edit</button>
-                            <button>Delete</button>
+                            <button className="button" onClick={()=>openModal(product)} >Edit</button>
+                            { "  " }
+                            <button className="button" onClick={()=>deleteHandler(product)} >Delete</button>
                            
                         </td>
                         

@@ -246,7 +246,7 @@ text-decoration: none;
   background-color: #f0c040;
 }
 .button.secondary{
-  background-color: #808080;
+  background-color:burlywood;
 }
 .text-center{
   text-align: center;
@@ -342,4 +342,27 @@ input{
   border: .1rem #c0c0c0 solid;
   border-radius: .5rem;
 }
+
+/* Products */
+
+.product-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content-margined{
+  margin: 1rem;
+}
+
+.table{
+  width: 100%;
+}
+th{
+  text-align: left;
+}
+tbody>tr:nth-child(odd){
+  background-color: #e2dede;
+}
+
 

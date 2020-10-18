@@ -10,7 +10,7 @@ function ProductScreen(props){
     const {product,loading,error} = productDetails
     const dispatch = useDispatch()
 
-    useEffect((props)=> {
+    useEffect(()=> {
         console.log(props.match.params.id);
         dispatch(detailsProduct(props.match.params.id));
         return()=>{
@@ -23,8 +23,7 @@ function ProductScreen(props){
         props.history.push('/cart/' + props.match.params.id + "? Qty=" + qty)
     }
     
-    return  (
-          <div>
+    return   <div>
             <div className='back-to-results' >
             <Link to='/' > Back to Home </Link>
             </div>
@@ -75,7 +74,6 @@ function ProductScreen(props){
                         {[...Array(product.countInStock).keys()].map(x=>
                         <option key={x+1} value={x+1} > {x+1}  </option>    
                             )}
-                
                     </select>
                 </li>
                 <li>
@@ -90,11 +88,7 @@ function ProductScreen(props){
         )
             }
            
-           </div>
-             )
-    
-    
-                
+           </div>         
         
 }
 export default ProductScreen
